@@ -131,10 +131,63 @@ def reports():
             'icon': 'fa-solid fa-road',
             'url': '/reports/pathways',
             'category': 'Program Reports'
+        },
+        {
+            'title': 'New Skills Summary Report',
+            'description': 'View new skills learned by students in events.',
+            'icon': 'fa-solid fa-graduation-cap',
+            'url': '/reports/NewSkillsReports.html',
+            'category': 'Student Learning'
         }
     ]
     
     return render_template('reports/reports.html', reports=available_reports)
+
+
+@report_bp.route('/reports/NewSkillsReports.html')
+@login_required
+def Skillreport():
+    # Get the 'name' filter from the query string (if any)
+    name_filter = request.args.get('name', None)
+
+    # Get pagination parameters
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 25, type=int)
+    
+    # Validate per_page value
+    allowed_per_page = [10, 25, 50, 100]
+    if per_page not in allowed_per_page:
+        per_page = 25  # fallback to default if invalid value
+   
+    query = Volunteer.query
+    name = None
+    query = query.filter(Volunteer.organization_name.is_((None)))
+    # Apply pagination
+    pagination = query.paginate(
+        page=page,
+        per_page=per_page,
+        error_out=False
+    )
+    
+    # Paginate the query (x per page)
+    
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False)
+    
+    #If the name_filter is provided, filter the query
+    current_filters = {
+       'organization_name': Organization.name
+    }
+
+    # Get the items for the current page
+    volunteers = pagination.items
+    print(name_filter)
+    return render_template(
+        'reports/NewSkillsReports.html',
+        volunteers=volunteers,
+        pagination=pagination,
+        name_filter=name_filter,  # Pass this so you can keep it in the search box or page links
+        current_filters= current_filters 
+    )
 
 @report_bp.route('/reports/virtual/usage')
 @login_required

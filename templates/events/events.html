@@ -136,7 +136,7 @@
     </div>
 
     <!-- Add pagination container at the bottom -->
-    <div class="pagination-container">
+   <div class="pagination-container">
         <div class="pagination-controls">
             <div class="pagination-info">
                 <select class="per-page-select" name="per_page">
@@ -176,8 +176,9 @@
             Showing {{ pagination.items|length }} of {{ pagination.total }} events 
             (Page {{ pagination.page }} of {{ pagination.pages }})
         </div>
-    </div>
-</div>
+   </div>
+</div> 
+
 <!-- Add this at the bottom of your template, before the closing body tag -->
 <div id="deleteModal" class="modal-overlay" style="display: none;">
     <div class="confirm-modal">

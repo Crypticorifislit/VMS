@@ -1,0 +1,209 @@
+/* Container Styles */
+.thankyou-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2rem;
+}
+
+/* Filter Styles */
+.filters {
+    margin-bottom: 2rem;
+}
+
+.year-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.year-filter label {
+    font-weight: 500;
+    color: #555;
+}
+
+.year-filter select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 100px;
+}
+
+/* Table Styles */
+.organization-table,
+.volunteer-table,
+.events-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+}
+
+tr:hover {
+    background: #f9f9f9;
+}
+
+/* Link Styles */
+.org-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.org-link:hover {
+    text-decoration: underline;
+}
+
+/* Detail View Styles */
+.thankyou-detail-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #666;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #333;
+}
+
+.back-link i {
+    margin-right: 0.5rem;
+}
+
+.detail-section {
+    margin-bottom: 3rem;
+}
+
+.detail-section h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+/* Stats Display */
+.stats-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .thankyou-container,
+    .thankyou-detail-container {
+        padding: 1rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+
+    .page-header {
+        font-size: 1.5rem;
+    }
+
+    .stats-summary {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* Table Cell Alignment */
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4) {
+    text-align: center;
+}
+
+th:nth-child(2),
+th:nth-child(3),
+th:nth-child(4) {
+    text-align: center;
+}
+
+/* Empty State */
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Print Styles */
+@media print {
+    .filters,
+    .back-link {
+        display: none;
+    }
+
+    .thankyou-container,
+    .thankyou-detail-container {
+        padding: 0;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+} 
